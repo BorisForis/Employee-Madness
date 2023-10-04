@@ -1,0 +1,27 @@
+// https://mongoosejs.com/
+const mongoose = require("mongoose");
+
+const { Schema } = mongoose;
+
+const EmployeeSchema = new Schema({
+  name: String,
+  level: String,
+  salary: String,
+  position: String,
+  tool: String,
+  notes: Array,
+  favoriteBrand: {
+    type: Schema.Types.ObjectId,
+    ref: 'FavoriteBrand'
+  },
+  favoriteColor: {
+    type: Schema.Types.ObjectId,
+    ref: 'FavoriteColor'
+  },
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+module.exports = mongoose.model("Employee", EmployeeSchema);
